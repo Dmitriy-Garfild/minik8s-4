@@ -1,0 +1,77 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-backend
+  labels:
+    task: one
+    tier: homework
+  annotations:
+    container: multitool
+  namespace: netology
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      type: backend 
+  template:
+    metadata:
+      labels:
+        app: multitool
+        type: backend
+    spec:
+      containers:
+        - name: multitool
+          image: praqma/network-multitool:alpine-extra
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "450m"
+            requests:
+              memory: "32Mi"
+              cpu: "150m"
+          env:
+            - name: HTTP_PORT
+              value: "8080"
+            - name: HTTPS_PORT
+              value: "8443"
+          ports:
+            - name: http-multitool
+              containerPort: 8080
+              protocol: TCP
+            - name: https-multitool
+              containerPort: 8443
+              protocol: TCP
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 2
+      initContainers:
+        - name: busybox
+          image: busybox:1.36.1
+          resources:
+            limits:
+              memory: "64Mi"
+              cpu: "250m"
+            requests:
+              memory: "8Mi"
+              cpu: "50m"
+          env:
+            - name: TARGET
+              value: "svc-backend"
+          command: ['sh', '-c', "until nslookup $TARGET.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do sleep 2; done"]
+...
