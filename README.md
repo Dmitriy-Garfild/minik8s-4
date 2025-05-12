@@ -345,26 +345,25 @@
 
 3. ![Скриншот 2](image_2.JPG)
 
-
-    `root@srv-000:/home/dim/cuber/minik8s-4# microk8s enable ingress
-    Infer repository core for addon ingress
-    Enabling Ingress
-    ingressclass.networking.k8s.io/public created
-    ingressclass.networking.k8s.io/nginx created
-    namespace/ingress created
-    serviceaccount/nginx-ingress-microk8s-serviceaccount created
-    clusterrole.rbac.authorization.k8s.io/nginx-ingress-microk8s-clusterrole created
-    role.rbac.authorization.k8s.io/nginx-ingress-microk8s-role created
-    clusterrolebinding.rbac.authorization.k8s.io/nginx-ingress-microk8s created
-    rolebinding.rbac.authorization.k8s.io/nginx-ingress-microk8s created
-    configmap/nginx-load-balancer-microk8s-conf created
-    configmap/nginx-ingress-tcp-microk8s-conf created
-    configmap/nginx-ingress-udp-microk8s-conf created
-    daemonset.apps/nginx-ingress-microk8s-controller created
-    Ingress is enabled
-    root@srv-000:/home/dim/cuber/minik8s-4# microk8s kubectl apply -f ingress.yaml 
-    ingress.networking.k8s.io/ingress-hv created
-    root@srv-000:/home/dim/cuber/minik8s-4#` 
+      `root@srv-000:/home/dim/cuber/minik8s-4# microk8s enable ingress
+       Infer repository core for addon ingress
+       Enabling Ingress
+       ingressclass.networking.k8s.io/public created
+       ingressclass.networking.k8s.io/nginx created
+       namespace/ingress created
+       serviceaccount/nginx-ingress-microk8s-serviceaccount created
+       clusterrole.rbac.authorization.k8s.io/nginx-ingress-microk8s-clusterrole created
+       role.rbac.authorization.k8s.io/nginx-ingress-microk8s-role created
+       clusterrolebinding.rbac.authorization.k8s.io/nginx-ingress-microk8s created
+       rolebinding.rbac.authorization.k8s.io/nginx-ingress-microk8s created
+       configmap/nginx-load-balancer-microk8s-conf created
+       configmap/nginx-ingress-tcp-microk8s-conf created
+       configmap/nginx-ingress-udp-microk8s-conf created
+       daemonset.apps/nginx-ingress-microk8s-controller created
+       Ingress is enabled
+       root@srv-000:/home/dim/cuber/minik8s-4# microk8s kubectl apply -f ingress.yaml
+       ingress.networking.k8s.io/ingress-hv created
+       root@srv-000:/home/dim/cuber/minik8s-4#` 
 
 ------
 
