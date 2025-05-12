@@ -346,7 +346,7 @@
 3. ![Скриншот 2](image_2.JPG)
 
 
-    root@srv-000:/home/dim/cuber/minik8s-4# microk8s enable ingress
+    `root@srv-000:/home/dim/cuber/minik8s-4# microk8s enable ingress
     Infer repository core for addon ingress
     Enabling Ingress
     ingressclass.networking.k8s.io/public created
@@ -364,7 +364,7 @@
     Ingress is enabled
     root@srv-000:/home/dim/cuber/minik8s-4# microk8s kubectl apply -f ingress.yaml 
     ingress.networking.k8s.io/ingress-hv created
-    root@srv-000:/home/dim/cuber/minik8s-4# 
+    root@srv-000:/home/dim/cuber/minik8s-4#` 
 
 ------
 
